@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8prwc02hhlwl"]
+
+[ext_resource type="Theme" uid="uid://pps1e7pbv6aj" path="res://nodes/gui/button.tres" id="1_u3v7r"]
+
+[node name="SelfButton" type="Button"]
+offset_right = 192.0
+offset_bottom = 64.0
+theme = ExtResource("1_u3v7r")

@@ -1,0 +1,7 @@
+LINE 1b,0,1b,0,1b,0,1b,0,1g
+LINE 1b,0,1b,0,1b,0,1b,0,1g
+LINE 1b,0,1b,0,1b,0,1b,0,1g
+LINE 1b,0,1b,0,1b,0,1b,0,1g
+LINE 1b,0,1b,0,1b,0,1b,0,1g
+EVENT 0
+

@@ -1,0 +1,7 @@
+LINE 3d,3d,3d,1b,0,1s,1b,1g,0
+LINE 1b,0,1b,0,1b,0,1b,0,1g
+LINE 1b,0,1b,0,1b,0,1b,0,1g
+LINE 1b,0,1b,0,1b,0,1b,0,1g
+LINE 1b,0,1b,0,1b,0,1b,0,1g
+EVENT 0
+

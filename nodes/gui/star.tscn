@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://xvb8d5q4sr57"]
+
+[ext_resource type="Theme" uid="uid://bh6jkjg5lp1j6" path="res://nodes/gui/nums.tres" id="1_4v6kx"]
+[ext_resource type="Texture2D" uid="uid://dsnsflwv2jggy" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Gen UI/UI_INPUT.png" id="1_ho0b5"]
+[ext_resource type="Script" path="res://nodes/gui/star.gd" id="2_g4myr"]
+[ext_resource type="Texture2D" uid="uid://bjamvatlhtb4u" path="res://assets/tai.png" id="4_lfefk"]
+
+[node name="Star" type="Control"]
+custom_minimum_size = Vector2(231, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -89.0
+offset_top = 8.0
+offset_right = 167.0
+offset_bottom = 40.0
+theme = ExtResource("1_4v6kx")
+script = ExtResource("2_g4myr")
+
+[node name="UiInput" type="Sprite2D" parent="."]
+position = Vector2(111, -4)
+scale = Vector2(0.947761, 0.740741)
+texture = ExtResource("1_ho0b5")
+
+[node name="UiStarLarge" type="Sprite2D" parent="."]
+position = Vector2(9, -8)
+scale = Vector2(0.255319, 0.283688)
+texture = ExtResource("4_lfefk")
+
+[node name="Num" type="Label" parent="."]
+self_modulate = Color(1, 0.67451, 0.45098, 1)
+layout_mode = 0
+offset_left = 89.0
+offset_top = -16.0
+offset_right = 233.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 30
+text = "100"
+horizontal_alignment = 2

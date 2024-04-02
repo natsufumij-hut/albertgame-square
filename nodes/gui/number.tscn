@@ -1,0 +1,146 @@
+[gd_scene load_steps=12 format=3 uid="uid://eaqiifu6s2u5"]
+
+[ext_resource type="Texture2D" uid="uid://d2qhjmfi3vlbg" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_0.png" id="1_2grnr"]
+[ext_resource type="Script" path="res://nodes/gui/number.gd" id="1_v8tvt"]
+[ext_resource type="Texture2D" uid="uid://bykxjcbpxyc3n" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_1.png" id="2_hpeau"]
+[ext_resource type="Texture2D" uid="uid://doxi6isk6coby" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_2.png" id="3_d8prr"]
+[ext_resource type="Texture2D" uid="uid://c0s5ckvhveshn" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_3.png" id="4_lotfr"]
+[ext_resource type="Texture2D" uid="uid://chen33ha4dalv" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_4.png" id="5_q1bqv"]
+[ext_resource type="Texture2D" uid="uid://b03cnufrlt4w1" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_5.png" id="6_yvoi4"]
+[ext_resource type="Texture2D" uid="uid://ci5vrqqiwgrio" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_6.png" id="7_8lyqr"]
+[ext_resource type="Texture2D" uid="uid://bmleaunmq47lb" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_7.png" id="8_s2kqa"]
+[ext_resource type="Texture2D" uid="uid://dw6kposwlji71" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_8.png" id="9_os1hv"]
+[ext_resource type="Texture2D" uid="uid://dpp1csede6fx6" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_9.png" id="10_2l3pi"]
+
+[node name="Number" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_v8tvt")
+
+[node name="NuBacks" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Symb0" type="Sprite2D" parent="NuBacks"]
+position = Vector2(72, 120)
+texture = ExtResource("1_2grnr")
+
+[node name="Symb1" type="Sprite2D" parent="NuBacks"]
+position = Vector2(72, 120)
+texture = ExtResource("2_hpeau")
+
+[node name="Symb2" type="Sprite2D" parent="NuBacks"]
+position = Vector2(72, 120)
+texture = ExtResource("3_d8prr")
+
+[node name="Symb3" type="Sprite2D" parent="NuBacks"]
+position = Vector2(72, 120)
+texture = ExtResource("4_lotfr")
+
+[node name="Symb4" type="Sprite2D" parent="NuBacks"]
+position = Vector2(72, 120)
+texture = ExtResource("5_q1bqv")
+
+[node name="Symb5" type="Sprite2D" parent="NuBacks"]
+position = Vector2(72, 120)
+texture = ExtResource("6_yvoi4")
+
+[node name="Symb6" type="Sprite2D" parent="NuBacks"]
+position = Vector2(72, 120)
+texture = ExtResource("7_8lyqr")
+
+[node name="Symb7" type="Sprite2D" parent="NuBacks"]
+position = Vector2(72, 120)
+texture = ExtResource("8_s2kqa")
+
+[node name="Symb8" type="Sprite2D" parent="NuBacks"]
+position = Vector2(72, 120)
+texture = ExtResource("9_os1hv")
+
+[node name="Symb9" type="Sprite2D" parent="NuBacks"]
+position = Vector2(72, 120)
+texture = ExtResource("10_2l3pi")
+
+[node name="Nums" type="HBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -16.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="n1" type="TextureRect" parent="Nums"]
+custom_minimum_size = Vector2(24, 36)
+layout_mode = 2
+texture = ExtResource("2_hpeau")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="n2" type="TextureRect" parent="Nums"]
+custom_minimum_size = Vector2(24, 36)
+layout_mode = 2
+texture = ExtResource("1_2grnr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="n3" type="TextureRect" parent="Nums"]
+custom_minimum_size = Vector2(24, 36)
+layout_mode = 2
+texture = ExtResource("1_2grnr")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="n4" type="TextureRect" parent="Nums"]
+visible = false
+custom_minimum_size = Vector2(24, 36)
+layout_mode = 2
+texture = ExtResource("2_hpeau")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="n5" type="TextureRect" parent="Nums"]
+visible = false
+custom_minimum_size = Vector2(24, 36)
+layout_mode = 2
+texture = ExtResource("2_hpeau")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="n6" type="TextureRect" parent="Nums"]
+visible = false
+custom_minimum_size = Vector2(24, 36)
+layout_mode = 2
+texture = ExtResource("2_hpeau")
+expand_mode = 1
+
+[node name="n7" type="TextureRect" parent="Nums"]
+visible = false
+custom_minimum_size = Vector2(24, 36)
+layout_mode = 2
+texture = ExtResource("2_hpeau")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="n8" type="TextureRect" parent="Nums"]
+visible = false
+custom_minimum_size = Vector2(24, 36)
+layout_mode = 2
+texture = ExtResource("2_hpeau")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="n9" type="TextureRect" parent="Nums"]
+visible = false
+custom_minimum_size = Vector2(24, 36)
+layout_mode = 2
+texture = ExtResource("2_hpeau")
+expand_mode = 1
+stretch_mode = 4

@@ -1,0 +1,239 @@
+[gd_scene load_steps=14 format=3 uid="uid://b8vhflq28sbm5"]
+
+[ext_resource type="Texture2D" uid="uid://cnhtxew0svj8e" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_GREEN_SQ.png" id="1_ydm83"]
+[ext_resource type="Script" path="res://nodes/gui/Successed.gd" id="2_i3k4k"]
+[ext_resource type="Theme" uid="uid://bh6jkjg5lp1j6" path="res://nodes/gui/nums.tres" id="3_0titf"]
+[ext_resource type="Texture2D" uid="uid://65luvdoruw1e" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_MENU.png" id="4_sx7vn"]
+[ext_resource type="Script" path="res://nodes/gui/IconButton.gd" id="5_w4ajc"]
+[ext_resource type="Texture2D" uid="uid://75p2gmqg2ndn" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_RED_CIRCLE_OUT.png" id="6_skv5b"]
+
+[sub_resource type="Animation" id="Animation_wo3li"]
+resource_name = "anim"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:size")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(61, 320), Vector2(320, 320)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("P1:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("P2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_con0t"]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(344, 320), Vector2(61, 320)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"go_next_level"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26kt8"]
+_data = {
+"anim": SubResource("Animation_wo3li"),
+"close": SubResource("Animation_con0t")
+}
+
+[sub_resource type="Curve" id="Curve_vdd0f"]
+_data = [Vector2(0, 0.887402), 0.0, 0.0, 0, 0, Vector2(0.243346, 0.324409), 0.0, 0.0, 0, 0, Vector2(0.711027, 0.692913), 0.0, 0.0, 0, 0, Vector2(0.980989, 0.273228), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_7asuy"]
+curve = SubResource("Curve_vdd0f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7wcxe"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(20, 20, 0)
+emission_shape_scale = Vector3(30, 30, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 11.2
+angle_max = 346.0
+velocity_pivot = Vector3(10, 10, 0)
+direction = Vector3(30, -30, 0)
+spread = 92.442
+flatness = 0.395
+initial_velocity_min = 248.06
+initial_velocity_max = 744.19
+gravity = Vector3(0, 1000, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_7asuy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6qgbv"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(20, 20, 0)
+emission_shape_scale = Vector3(30, 30, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 11.2
+angle_max = 346.0
+velocity_pivot = Vector3(10, 10, 0)
+direction = Vector3(-30, -30, 0)
+spread = 92.442
+flatness = 0.395
+initial_velocity_min = 248.06
+initial_velocity_max = 744.19
+gravity = Vector3(0, 1000, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_7asuy")
+
+[node name="ClearAll" type="NinePatchRect"]
+offset_right = 320.0
+offset_bottom = 320.0
+texture = ExtResource("1_ydm83")
+patch_margin_left = 32
+patch_margin_top = 31
+patch_margin_right = 29
+patch_margin_bottom = 40
+script = ExtResource("2_i3k4k")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 48.0
+offset_right = 296.0
+offset_bottom = 198.0
+theme = ExtResource("3_0titf")
+theme_override_font_sizes/font_size = 40
+text = "CLEAR
+LEVEL
+ALL!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 208.0
+offset_right = 255.0
+offset_bottom = 268.0
+texture_normal = ExtResource("4_sx7vn")
+script = ExtResource("5_w4ajc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_26kt8")
+}
+
+[node name="P1" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_7wcxe")
+texture = ExtResource("6_skv5b")
+lifetime = 0.5
+one_shot = true
+
+[node name="P2" type="GPUParticles2D" parent="."]
+position = Vector2(336, 8)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_6qgbv")
+texture = ExtResource("6_skv5b")
+lifetime = 0.5
+one_shot = true
+
+[connection signal="pressed" from="Control/Menu" to="." method="go_title"]

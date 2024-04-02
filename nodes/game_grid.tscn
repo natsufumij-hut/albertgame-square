@@ -1,0 +1,537 @@
+[gd_scene load_steps=57 format=3 uid="uid://drwl7dk0akq4i"]
+
+[ext_resource type="Texture2D" uid="uid://b2rp8a62wr2rq" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_PLAIN (6).png" id="1_rtu8q"]
+[ext_resource type="Script" path="res://nodes/game_grid.gd" id="2_ckodb"]
+[ext_resource type="PackedScene" uid="uid://cih0rtbhenqxl" path="res://nodes/crak/OneCrak.tscn" id="3_hh2i8"]
+[ext_resource type="PackedScene" uid="uid://cbl8igcbe2t04" path="res://nodes/crak/TwoCrak.tscn" id="4_avcvd"]
+[ext_resource type="PackedScene" uid="uid://cfjdlq583agtv" path="res://nodes/crak/ThreeCrak.tscn" id="5_s8gu6"]
+[ext_resource type="PackedScene" uid="uid://cajqd2gnrtuxu" path="res://nodes/expire_crak.tscn" id="6_bvcdf"]
+
+[sub_resource type="Animation" id="Animation_o4bwl"]
+resource_name = "breaks"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"break_craks"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTree:parameters/conditions/HasBreaked")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationTree:parameters/Drop/conditions/DropEnd")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationTree:parameters/conditions/NoBreak")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationTree:parameters/WaitHandle/conditions/WaitEnd")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationTree:parameters/Event/conditions/EventEnd")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationTree:parameters/InitCraks/conditions/InitEnd")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wpo4m"]
+resource_name = "check_down"
+
+[sub_resource type="Animation" id="Animation_4xh8j"]
+resource_name = "drop_craks"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"drop_craks"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTree:parameters/Drop/conditions/DropEnd")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationTree:parameters/conditions/HasBreaked")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationTree:parameters/conditions/NoBreak")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_s35cr"]
+resource_name = "end"
+
+[sub_resource type="Animation" id="Animation_r58am"]
+resource_name = "handle"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"wait_handle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kra0m"]
+resource_name = "handle_end"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"wait_end"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTree:parameters/WaitHandle/conditions/WaitEnd")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_it26b"]
+resource_name = "init_lines"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"wait_init"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTree:parameters/InitCraks/conditions/InitEnd")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationTree:parameters/conditions/Restart")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationTree:parameters/conditions/Successed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationTree:parameters/conditions/Failed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rdh0o"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_yhfr7"]
+resource_name = "new_animation_2"
+
+[sub_resource type="Animation" id="Animation_k30ub"]
+resource_name = "wait_event"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"wait_for_event"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a7bef"]
+_data = {
+"breaks": SubResource("Animation_o4bwl"),
+"check_down": SubResource("Animation_wpo4m"),
+"drop_craks": SubResource("Animation_4xh8j"),
+"end": SubResource("Animation_s35cr"),
+"handle": SubResource("Animation_r58am"),
+"handle_end": SubResource("Animation_kra0m"),
+"init_lines": SubResource("Animation_it26b"),
+"new_animation": SubResource("Animation_rdh0o"),
+"new_animation_2": SubResource("Animation_yhfr7"),
+"wait_event": SubResource("Animation_k30ub")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ybmm4"]
+animation = &"breaks"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uxyod"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_eob6r"]
+states/breaks/node = SubResource("AnimationNodeAnimation_ybmm4")
+states/breaks/position = Vector2(404, 100)
+transitions = ["Start", "breaks", SubResource("AnimationNodeStateMachineTransition_uxyod")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qb8av"]
+animation = &"drop_craks"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s1mml"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v4hd1"]
+advance_mode = 2
+advance_condition = &"DropEnd"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_847c7"]
+states/drop_craks/node = SubResource("AnimationNodeAnimation_qb8av")
+states/drop_craks/position = Vector2(368, 100)
+transitions = ["Start", "drop_craks", SubResource("AnimationNodeStateMachineTransition_s1mml"), "drop_craks", "End", SubResource("AnimationNodeStateMachineTransition_v4hd1")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bpcxo"]
+animation = &"wait_event"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hdr3w"]
+advance_mode = 2
+advance_condition = &"NeedEvent"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qxt73"]
+advance_mode = 2
+advance_condition = &"NoNeedEvent"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7prm0"]
+advance_mode = 2
+advance_condition = &"EventEnd"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2ls4w"]
+states/End/position = Vector2(496, 313)
+states/Start/position = Vector2(199, 100)
+states/wait_event/node = SubResource("AnimationNodeAnimation_bpcxo")
+states/wait_event/position = Vector2(496, 100)
+transitions = ["Start", "wait_event", SubResource("AnimationNodeStateMachineTransition_hdr3w"), "Start", "End", SubResource("AnimationNodeStateMachineTransition_qxt73"), "wait_event", "End", SubResource("AnimationNodeStateMachineTransition_7prm0")]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5kajh"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k7x5l"]
+animation = &"init_lines"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5up0s"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pilt8"]
+advance_mode = 2
+advance_condition = &"InitEnd"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_t5uyj"]
+states/init_lines/node = SubResource("AnimationNodeAnimation_k7x5l")
+states/init_lines/position = Vector2(460, 100)
+transitions = ["Start", "init_lines", SubResource("AnimationNodeStateMachineTransition_5up0s"), "init_lines", "End", SubResource("AnimationNodeStateMachineTransition_pilt8")]
+graph_offset = Vector2(-37, -30)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d1aiq"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n68fm"]
+animation = &"breaks"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ot3fx"]
+animation = &"drop_craks"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uapct"]
+animation = &"handle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_02duq"]
+animation = &"handle_end"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w7wcw"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y5q6w"]
+advance_mode = 2
+advance_condition = &"WaitEnd"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0qt2b"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n0re5"]
+advance_mode = 2
+advance_condition = &"UserHand"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8vom1"]
+states/breaks/node = SubResource("AnimationNodeAnimation_n68fm")
+states/breaks/position = Vector2(384, 236)
+states/drop_craks/node = SubResource("AnimationNodeAnimation_ot3fx")
+states/drop_craks/position = Vector2(541, 254)
+states/handle/node = SubResource("AnimationNodeAnimation_uapct")
+states/handle/position = Vector2(424, 100)
+states/handle_end/node = SubResource("AnimationNodeAnimation_02duq")
+states/handle_end/position = Vector2(702, 100)
+transitions = ["Start", "handle", SubResource("AnimationNodeStateMachineTransition_w7wcw"), "handle", "handle_end", SubResource("AnimationNodeStateMachineTransition_y5q6w"), "handle_end", "End", SubResource("AnimationNodeStateMachineTransition_0qt2b"), "breaks", "drop_craks", SubResource("AnimationNodeStateMachineTransition_n0re5")]
+graph_offset = Vector2(54, 31)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tnfk3"]
+advance_mode = 2
+advance_condition = &"Start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2txy0"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cirqm"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c5ote"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8a0s4"]
+advance_mode = 2
+advance_condition = &"Successed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5rlpd"]
+advance_mode = 2
+advance_condition = &"Restart"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xjalo"]
+advance_mode = 2
+advance_condition = &"Failed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ypjck"]
+advance_mode = 2
+advance_condition = &"HasBreaked"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2nliv"]
+advance_mode = 2
+advance_condition = &"NoBreak"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rqw5b"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oeuna"]
+advance_mode = 2
+advance_condition = &"Restart"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5hv0w"]
+states/Break/node = SubResource("AnimationNodeStateMachine_eob6r")
+states/Break/position = Vector2(367, 402)
+states/Drop/node = SubResource("AnimationNodeStateMachine_847c7")
+states/Drop/position = Vector2(367, 216)
+states/Event/node = SubResource("AnimationNodeStateMachine_2ls4w")
+states/Event/position = Vector2(-27, 402)
+states/Failed/node = SubResource("AnimationNodeStateMachine_5kajh")
+states/Failed/position = Vector2(75, 170)
+states/InitCraks/node = SubResource("AnimationNodeStateMachine_t5uyj")
+states/InitCraks/position = Vector2(238, 77)
+states/Start/position = Vector2(-114, 77)
+states/Success/node = SubResource("AnimationNodeStateMachine_d1aiq")
+states/Success/position = Vector2(-214, 170)
+states/WaitHandle/node = SubResource("AnimationNodeStateMachine_8vom1")
+states/WaitHandle/position = Vector2(-72, 252)
+transitions = ["Start", "InitCraks", SubResource("AnimationNodeStateMachineTransition_tnfk3"), "InitCraks", "Drop", SubResource("AnimationNodeStateMachineTransition_2txy0"), "Drop", "Break", SubResource("AnimationNodeStateMachineTransition_cirqm"), "WaitHandle", "Drop", SubResource("AnimationNodeStateMachineTransition_c5ote"), "WaitHandle", "Success", SubResource("AnimationNodeStateMachineTransition_8a0s4"), "Failed", "InitCraks", SubResource("AnimationNodeStateMachineTransition_5rlpd"), "WaitHandle", "Failed", SubResource("AnimationNodeStateMachineTransition_xjalo"), "Break", "Drop", SubResource("AnimationNodeStateMachineTransition_ypjck"), "Break", "Event", SubResource("AnimationNodeStateMachineTransition_2nliv"), "Event", "WaitHandle", SubResource("AnimationNodeStateMachineTransition_rqw5b"), "Success", "InitCraks", SubResource("AnimationNodeStateMachineTransition_oeuna")]
+graph_offset = Vector2(-326, 42)
+
+[node name="GameGrid" type="NinePatchRect"]
+offset_top = 16.0
+offset_right = 448.0
+offset_bottom = 568.0
+mouse_filter = 1
+texture = ExtResource("1_rtu8q")
+region_rect = Rect2(0, 0, 69, 51)
+patch_margin_left = 28
+patch_margin_top = 12
+patch_margin_right = 23
+patch_margin_bottom = 18
+script = ExtResource("2_ckodb")
+one = ExtResource("3_hh2i8")
+two = ExtResource("4_avcvd")
+three = ExtResource("5_s8gu6")
+
+[node name="Craks" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Controls" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a7bef")
+}
+tree_root = SubResource("AnimationNodeStateMachine_5hv0w")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/Failed = false
+parameters/conditions/HasBreaked = false
+parameters/conditions/NoBreak = false
+parameters/conditions/Restart = false
+parameters/conditions/Start = false
+parameters/conditions/Successed = false
+parameters/Drop/conditions/DropEnd = false
+parameters/Event/conditions/EventEnd = false
+parameters/Event/conditions/NeedEvent = false
+parameters/Event/conditions/NoNeedEvent = true
+parameters/InitCraks/conditions/InitEnd = false
+parameters/WaitHandle/conditions/UserHand = false
+parameters/WaitHandle/conditions/WaitEnd = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a7bef")
+}
+
+[node name="ExpireCrak" parent="." instance=ExtResource("6_bvcdf")]
+visible = false
+position = Vector2(224, 16)

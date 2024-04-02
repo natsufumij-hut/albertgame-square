@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://wujcp7atq5o5"]
+
+[ext_resource type="Script" path="res://nodes/crak/AboutCrak.gd" id="1_5744w"]
+[ext_resource type="Texture2D" uid="uid://cf00n050j4ii0" path="res://assets/klo.png" id="1_pveq6"]
+[ext_resource type="Texture2D" uid="uid://swgmr2watbgj" path="res://assets/face/DD162.png" id="3_xhu1t"]
+[ext_resource type="Texture2D" uid="uid://bdy675ao4fwp2" path="res://assets/face/DD163.png" id="4_6b7lj"]
+[ext_resource type="Texture2D" uid="uid://bqv6gtwkqqwcb" path="res://assets/face/DD167.png" id="5_40l1y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nl6a"]
+atlas = ExtResource("1_pveq6")
+region = Rect2(1, 1, 64, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dq78"]
+atlas = ExtResource("1_pveq6")
+region = Rect2(0, 35, 39, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndq0q"]
+animations = [{
+"frames": [{
+"duration": 0.9,
+"texture": ExtResource("3_xhu1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6b7lj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_40l1y")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="AboutCrak" type="Control"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5744w")
+
+[node name="Back" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = SubResource("AtlasTexture_3nl6a")
+patch_margin_left = 8
+patch_margin_top = 7
+patch_margin_right = 10
+patch_margin_bottom = 7
+
+[node name="Abnormal" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = SubResource("AtlasTexture_3dq78")
+patch_margin_left = 9
+patch_margin_top = 11
+patch_margin_right = 10
+patch_margin_bottom = 11
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 24)
+scale = Vector2(0.333333, 0.333333)
+sprite_frames = SubResource("SpriteFrames_ndq0q")
+frame = 2
+frame_progress = 1.0

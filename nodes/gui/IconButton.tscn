@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8ayinxuhw7q"]
+
+[ext_resource type="Script" path="res://nodes/gui/IconButton.gd" id="1_03u8s"]
+[ext_resource type="Texture2D" uid="uid://bfrmbnjuyea6n" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_ BIGX.png" id="1_bkk7j"]
+
+[node name="IconButton" type="TextureButton"]
+offset_right = 88.0
+offset_bottom = 80.0
+texture_normal = ExtResource("1_bkk7j")
+stretch_mode = 5
+script = ExtResource("1_03u8s")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]

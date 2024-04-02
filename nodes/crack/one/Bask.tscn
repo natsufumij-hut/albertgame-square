@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://syyebrn4aprt"]
+
+[ext_resource type="Script" path="res://nodes/crack/CrackScript.gd" id="1_c7bp2"]
+[ext_resource type="Texture2D" uid="uid://bobus5e75ybs" path="res://assets/bask.png" id="2_dgwtg"]
+
+[node name="OneCrackBask" type="Control"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_c7bp2")
+code = "Normal"
+texture_code = "Bask"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("2_dgwtg")
+expand_mode = 1

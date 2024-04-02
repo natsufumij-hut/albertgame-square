@@ -1,0 +1,148 @@
+[gd_scene load_steps=14 format=3 uid="uid://c2cfllbsu82bk"]
+
+[ext_resource type="Script" path="res://scenes/unline_game.gd" id="1_gw31o"]
+[ext_resource type="Texture2D" uid="uid://bqw76nom2n3v2" path="res://assets/wood background.png" id="2_0xia5"]
+[ext_resource type="Texture2D" uid="uid://cikt6fpf2p14q" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_SLIDER_SM (10).png" id="3_v887n"]
+[ext_resource type="Texture2D" uid="uid://bwaihguq6mv8c" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_SLIDER_SM (3).png" id="4_ehfct"]
+[ext_resource type="PackedScene" uid="uid://ct3bsswiysob6" path="res://nodes/gui/score.tscn" id="5_3rk65"]
+[ext_resource type="Theme" uid="uid://bh6jkjg5lp1j6" path="res://nodes/gui/nums.tres" id="6_5o5rw"]
+[ext_resource type="Texture2D" uid="uid://bjdrcnpwe6ebv" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_PLAIN (1).png" id="7_56ji6"]
+[ext_resource type="PackedScene" uid="uid://drwl7dk0akq4i" path="res://nodes/game_grid.tscn" id="8_qol11"]
+[ext_resource type="PackedScene" uid="uid://dwte6mejrglas" path="res://nodes/items/Bask.tscn" id="9_5d88j"]
+[ext_resource type="PackedScene" uid="uid://b3l1tquvk0hfa" path="res://nodes/gui/died.tscn" id="9_ksixd"]
+[ext_resource type="PackedScene" uid="uid://brhmd2wvpw6o0" path="res://nodes/items/Diao.tscn" id="10_ja2da"]
+[ext_resource type="PackedScene" uid="uid://cxdd4a8sfxs2p" path="res://nodes/gui/Successed.tscn" id="10_wsojb"]
+[ext_resource type="PackedScene" uid="uid://xvb8d5q4sr57" path="res://nodes/gui/star.tscn" id="11_tdseu"]
+
+[node name="UnLimitGame" type="Node2D"]
+script = ExtResource("1_gw31o")
+
+[node name="StoryHUD" type="CanvasLayer" parent="."]
+
+[node name="Back" type="Sprite2D" parent="StoryHUD"]
+position = Vector2(240, 432)
+scale = Vector2(0.9375, 1.6875)
+texture = ExtResource("2_0xia5")
+
+[node name="Pause" type="TextureButton" parent="StoryHUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 64.0
+texture_normal = ExtResource("3_v887n")
+texture_pressed = ExtResource("4_ehfct")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Score" parent="StoryHUD" instance=ExtResource("5_3rk65")]
+offset_left = 16.0
+offset_top = 128.0
+offset_right = 192.0
+offset_bottom = 160.0
+
+[node name="Level" type="Label" parent="StoryHUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_top = 80.0
+offset_right = -60.0
+offset_bottom = 114.0
+grow_horizontal = 2
+theme = ExtResource("6_5o5rw")
+theme_override_font_sizes/font_size = 23
+text = "UNLIMIT"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MaxScore" type="Label" parent="StoryHUD"]
+offset_left = 192.0
+offset_top = 80.0
+offset_right = 461.0
+offset_bottom = 112.0
+theme = ExtResource("6_5o5rw")
+theme_override_font_sizes/font_size = 20
+text = "Max: 10000
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="GameGrid" parent="StoryHUD" instance=ExtResource("8_qol11")]
+offset_left = 16.0
+offset_top = 184.0
+offset_right = 464.0
+offset_bottom = 736.0
+
+[node name="Items" type="NinePatchRect" parent="StoryHUD"]
+offset_left = 16.0
+offset_top = 752.0
+offset_right = 464.0
+offset_bottom = 848.0
+texture = ExtResource("7_56ji6")
+patch_margin_left = 25
+patch_margin_top = 12
+patch_margin_right = 23
+patch_margin_bottom = 13
+
+[node name="Grid" type="GridContainer" parent="StoryHUD/Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 8.0
+offset_right = -17.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Bask" parent="StoryHUD/Items/Grid" instance=ExtResource("9_5d88j")]
+layout_mode = 2
+
+[node name="Diao" parent="StoryHUD/Items/Grid" instance=ExtResource("10_ja2da")]
+layout_mode = 2
+
+[node name="Died" parent="StoryHUD" instance=ExtResource("9_ksixd")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -120.0
+offset_right = 204.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Successed" parent="StoryHUD" instance=ExtResource("10_wsojb")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -160.0
+offset_right = 176.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star" parent="StoryHUD" instance=ExtResource("11_tdseu")]
+offset_left = 136.0
+offset_top = 48.0
+offset_right = 392.0
+offset_bottom = 80.0
+
+[connection signal="pressed" from="StoryHUD/Pause" to="." method="go_titled"]
+[connection signal="update_score" from="StoryHUD/Score" to="." method="update_score"]
+[connection signal="add_score" from="StoryHUD/GameGrid" to="." method="add_score"]
+[connection signal="end" from="StoryHUD/GameGrid" to="." method="failed"]
+[connection signal="wait_event" from="StoryHUD/GameGrid" to="." method="wait_next_event"]
+[connection signal="wait_init_lines" from="StoryHUD/GameGrid" to="." method="wait_init_lines"]
+[connection signal="wait_new_line" from="StoryHUD/GameGrid" to="." method="wait_next_line"]
+[connection signal="item_click" from="StoryHUD/Items/Grid/Bask" to="." method="_on_bask_item_click"]
+[connection signal="item_end" from="StoryHUD/Items/Grid/Bask" to="." method="_on_item_end"]
+[connection signal="replay" from="StoryHUD/Died" to="." method="replay"]

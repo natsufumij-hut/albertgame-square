@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bh6jkjg5lp1j6"]
+
+[ext_resource type="FontFile" uid="uid://ccef2crip7h1v" path="res://assets/crypt-of-tomorrow-ut-font-no-rus.ttf" id="1_gl21n"]
+[ext_resource type="Texture2D" uid="uid://cn14s5dxs2un3" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_CHECKBOX_OUT.png" id="2_velx5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5fg2f"]
+texture = ExtResource("2_velx5")
+texture_margin_left = 9.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(0, 0, 51, 55)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_luu7d"]
+texture = ExtResource("2_velx5")
+texture_margin_left = 9.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(0, 0, 51, 55)
+modulate_color = Color(1, 1, 1, 0.462745)
+
+[resource]
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_gl21n")
+LineEdit/font_sizes/font_size = 24
+LineEdit/styles/focus = SubResource("StyleBoxTexture_5fg2f")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_luu7d")

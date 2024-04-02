@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbl8igcbe2t04"]
+
+[ext_resource type="Texture2D" uid="uid://cf00n050j4ii0" path="res://assets/klo.png" id="1_3n2ko"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nw6f"]
+atlas = ExtResource("1_3n2ko")
+region = Rect2(186, 82, 56, 24)
+
+[node name="TwoCrak" type="NinePatchRect"]
+offset_right = 96.0
+offset_bottom = 48.0
+texture = SubResource("AtlasTexture_3nw6f")
+patch_margin_left = 12
+patch_margin_top = 7
+patch_margin_right = 9
+patch_margin_bottom = 7

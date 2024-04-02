@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2hufpeh4n4w3"]
+
+[ext_resource type="Script" path="res://nodes/crack/CrackScript.gd" id="1_ylkyq"]
+[ext_resource type="Texture2D" uid="uid://dxkg08d4422o" path="res://assets/crak/blue.tres" id="2_tve24"]
+
+[node name="OneCrackBlue" type="Control"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 48.0
+offset_bottom = 48.0
+script = ExtResource("1_ylkyq")
+code = "Normal"
+texture_code = "Blue"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("2_tve24")
+patch_margin_left = 8
+patch_margin_top = 6
+patch_margin_right = 7
+patch_margin_bottom = 5

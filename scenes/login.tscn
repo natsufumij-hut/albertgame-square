@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8j512ean6ewr"]
+
+[ext_resource type="Texture2D" uid="uid://cetthafywc7mv" path="res://assets/paper background.png" id="1_7pp02"]
+[ext_resource type="Theme" uid="uid://bh6jkjg5lp1j6" path="res://nodes/gui/nums.tres" id="1_yuhr5"]
+[ext_resource type="Script" path="res://scenes/login.gd" id="2_o6nck"]
+[ext_resource type="Texture2D" uid="uid://cl7dr6ykbo52a" path="res://assets/login_s.png" id="4_2677l"]
+[ext_resource type="PackedScene" uid="uid://ddtxuypbj1b8q" path="res://nodes/gui/avatar.tscn" id="4_e51d6"]
+[ext_resource type="Script" path="res://nodes/gui/IconButton.gd" id="5_7xjhg"]
+[ext_resource type="Texture2D" uid="uid://4pgkhuq17vbd" path="res://assets/exitLogin.png" id="6_wlcfb"]
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yuhr5")
+script = ExtResource("2_o6nck")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+offset_right = 480.0
+offset_bottom = 864.0
+texture = ExtResource("1_7pp02")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Avatar" parent="CanvasLayer" instance=ExtResource("4_e51d6")]
+custom_minimum_size = Vector2(144, 144)
+offset_left = 152.0
+offset_top = 304.0
+offset_right = 296.0
+offset_bottom = 448.0
+
+[node name="Id" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 32.0
+offset_top = 528.0
+offset_right = 456.0
+offset_bottom = 600.0
+theme = ExtResource("1_yuhr5")
+
+[node name="Label" type="Label" parent="CanvasLayer/Id"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("1_yuhr5")
+text = "ID: "
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Id"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+max_length = 20
+
+[node name="Pass" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 32.0
+offset_top = 624.0
+offset_right = 456.0
+offset_bottom = 696.0
+theme = ExtResource("1_yuhr5")
+
+[node name="Label" type="Label" parent="CanvasLayer/Pass"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("1_yuhr5")
+text = "PASS: "
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Pass"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+max_length = 20
+secret = true
+secret_character = "*"
+
+[node name="Login" type="TextureButton" parent="CanvasLayer"]
+offset_left = 280.0
+offset_top = 720.0
+offset_right = 384.0
+offset_bottom = 824.0
+texture_normal = ExtResource("4_2677l")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_7xjhg")
+
+[node name="ExitLogin" type="TextureButton" parent="CanvasLayer"]
+offset_left = 96.0
+offset_top = 728.0
+offset_right = 184.0
+offset_bottom = 824.0
+texture_normal = ExtResource("6_wlcfb")
+ignore_texture_size = true
+stretch_mode = 5
+flip_h = true
+script = ExtResource("5_7xjhg")
+
+[node name="LoginResult" type="AcceptDialog" parent="."]
+title = "登录结果"
+initial_position = 1
+size = Vector2i(119, 100)
+
+[node name="Label" type="Label" parent="LoginResult"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 111.0
+offset_bottom = 51.0
+text = "登录成功"
+
+[connection signal="pressed" from="CanvasLayer/Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="CanvasLayer/ExitLogin" to="." method="_on_exit_login_pressed"]

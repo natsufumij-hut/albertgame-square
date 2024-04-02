@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddtxuypbj1b8q"]
+
+[ext_resource type="Shader" path="res://nodes/gui/avatar.gdshader" id="1_tkmyp"]
+[ext_resource type="Texture2D" uid="uid://swgmr2watbgj" path="res://assets/face/DD162.png" id="2_h65tt"]
+[ext_resource type="Script" path="res://nodes/gui/avatar.gd" id="3_8bm1b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwopl"]
+shader = ExtResource("1_tkmyp")
+shader_parameter/texture_size = null
+shader_parameter/radius = null
+
+[node name="Avatar" type="TextureRect"]
+material = SubResource("ShaderMaterial_rwopl")
+custom_minimum_size = Vector2(96, 96)
+texture = ExtResource("2_h65tt")
+expand_mode = 1
+script = ExtResource("3_8bm1b")

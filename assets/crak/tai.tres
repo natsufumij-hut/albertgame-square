@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://kd115lwk7dnr"]
+
+[ext_resource type="Texture2D" uid="uid://cvps5u0pptccs" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_AWARD.png" id="1_h8sj3"]
+
+[resource]
+atlas = ExtResource("1_h8sj3")
+region = Rect2(0, 0, 81, 82)

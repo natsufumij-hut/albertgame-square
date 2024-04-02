@@ -1,0 +1,128 @@
+[gd_scene load_steps=11 format=3 uid="uid://byrayq6wp4sjj"]
+
+[ext_resource type="Texture2D" uid="uid://cikt6fpf2p14q" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_SLIDER_SM (10).png" id="1_7hn8a"]
+[ext_resource type="Script" path="res://scenes/story_game.gd" id="1_li01p"]
+[ext_resource type="Texture2D" uid="uid://bwaihguq6mv8c" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_SLIDER_SM (3).png" id="2_jtyon"]
+[ext_resource type="PackedScene" uid="uid://ct3bsswiysob6" path="res://nodes/gui/score.tscn" id="3_ca771"]
+[ext_resource type="Theme" uid="uid://bh6jkjg5lp1j6" path="res://nodes/gui/nums.tres" id="4_yqtgj"]
+[ext_resource type="Texture2D" uid="uid://bqw76nom2n3v2" path="res://assets/wood background.png" id="6_12vpl"]
+[ext_resource type="Texture2D" uid="uid://bjdrcnpwe6ebv" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_PLAIN (1).png" id="7_qrqg4"]
+[ext_resource type="PackedScene" uid="uid://drwl7dk0akq4i" path="res://nodes/game_grid.tscn" id="8_4fk4k"]
+[ext_resource type="PackedScene" uid="uid://b3l1tquvk0hfa" path="res://nodes/gui/died.tscn" id="9_eitkw"]
+[ext_resource type="PackedScene" uid="uid://cxdd4a8sfxs2p" path="res://nodes/gui/Successed.tscn" id="10_1jw1y"]
+
+[node name="StoryGame" type="Node2D"]
+script = ExtResource("1_li01p")
+
+[node name="StoryHUD" type="CanvasLayer" parent="."]
+
+[node name="Back" type="Sprite2D" parent="StoryHUD"]
+position = Vector2(240, 432)
+scale = Vector2(0.9375, 1.6875)
+texture = ExtResource("6_12vpl")
+
+[node name="Pause" type="TextureButton" parent="StoryHUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 64.0
+texture_normal = ExtResource("1_7hn8a")
+texture_pressed = ExtResource("2_jtyon")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Score" parent="StoryHUD" instance=ExtResource("3_ca771")]
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 192.0
+offset_bottom = 112.0
+
+[node name="Level" type="Label" parent="StoryHUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = 24.0
+offset_right = 92.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme = ExtResource("4_yqtgj")
+theme_override_font_sizes/font_size = 23
+text = "Level 1"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MaxScore" type="Label" parent="StoryHUD"]
+offset_left = 192.0
+offset_top = 80.0
+offset_right = 461.0
+offset_bottom = 112.0
+theme = ExtResource("4_yqtgj")
+theme_override_font_sizes/font_size = 20
+text = "Max: 10000
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Items" type="NinePatchRect" parent="StoryHUD"]
+offset_left = 16.0
+offset_top = 784.0
+offset_right = 464.0
+offset_bottom = 848.0
+texture = ExtResource("7_qrqg4")
+patch_margin_left = 25
+patch_margin_top = 12
+patch_margin_right = 23
+patch_margin_bottom = 13
+
+[node name="Grid" type="GridContainer" parent="StoryHUD/Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 9.0
+offset_right = -17.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameGrid" parent="StoryHUD" instance=ExtResource("8_4fk4k")]
+offset_left = 16.0
+offset_top = 224.0
+offset_right = 464.0
+offset_bottom = 776.0
+
+[node name="Died" parent="StoryHUD" instance=ExtResource("9_eitkw")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -120.0
+offset_right = 204.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Successed" parent="StoryHUD" instance=ExtResource("10_1jw1y")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -160.0
+offset_right = 176.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="add_score" from="StoryHUD/GameGrid" to="." method="add_score"]
+[connection signal="end" from="StoryHUD/GameGrid" to="." method="failed"]
+[connection signal="wait_event" from="StoryHUD/GameGrid" to="." method="wait_next_event"]
+[connection signal="wait_init_lines" from="StoryHUD/GameGrid" to="." method="wait_init_lines"]
+[connection signal="wait_new_line" from="StoryHUD/GameGrid" to="." method="wait_next_line"]
+[connection signal="replay" from="StoryHUD/Died" to="." method="replay"]

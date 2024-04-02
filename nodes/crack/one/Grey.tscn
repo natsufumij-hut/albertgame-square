@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8li7urhigk1m"]
+
+[ext_resource type="Script" path="res://nodes/crack/CrackScript.gd" id="1_84hal"]
+[ext_resource type="Texture2D" uid="uid://dgafqdk7yf0at" path="res://assets/crak/grey.tres" id="2_2i05y"]
+
+[node name="OneCrackGrey" type="Control"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 48.0
+offset_bottom = 48.0
+script = ExtResource("1_84hal")
+code = "Normal"
+texture_code = "Grey"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("2_2i05y")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 8
+patch_margin_bottom = 7

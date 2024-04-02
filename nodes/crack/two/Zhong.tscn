@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4tat1ulm3qu7"]
+
+[ext_resource type="Script" path="res://nodes/crack/CrackScript.gd" id="1_gxgb8"]
+[ext_resource type="Texture2D" uid="uid://cc05ufrkx14md" path="res://assets/fen.png" id="2_qan3q"]
+
+[node name="OneCrackZhone" type="Control"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 48.0
+script = ExtResource("1_gxgb8")
+crack_size = 2
+code = "Normal"
+texture_code = "Zhong"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 48.0
+texture = ExtResource("2_qan3q")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 8
+patch_margin_bottom = 7

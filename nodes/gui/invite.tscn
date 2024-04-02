@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://6chhdvyh5u60"]
+
+[ext_resource type="Theme" uid="uid://bh6jkjg5lp1j6" path="res://nodes/gui/nums.tres" id="1_qcdk2"]
+[ext_resource type="Script" path="res://nodes/gui/invite.gd" id="2_kiney"]
+[ext_resource type="PackedScene" uid="uid://bnvbgr4erik6x" path="res://nodes/gui/closepanel.tscn" id="2_ta588"]
+[ext_resource type="Script" path="res://nodes/gui/IconButton.gd" id="4_hhhbo"]
+[ext_resource type="Texture2D" uid="uid://b0ew3s7wcjemy" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_CHECK.png" id="5_xcp3r"]
+
+[node name="Invite" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 272.0
+offset_bottom = 152.0
+theme = ExtResource("1_qcdk2")
+script = ExtResource("2_kiney")
+
+[node name="Closepanel" parent="." instance=ExtResource("2_ta588")]
+layout_mode = 0
+offset_right = 272.0
+offset_bottom = 160.0
+
+[node name="Label" type="Label" parent="Closepanel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 56.0
+offset_bottom = 88.0
+text = "ID"
+
+[node name="LineEdit" type="LineEdit" parent="Closepanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 240.0
+offset_bottom = 100.0
+
+[node name="OK" type="TextureButton" parent="Closepanel"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 104.0
+offset_right = 152.0
+offset_bottom = 144.0
+texture_normal = ExtResource("5_xcp3r")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_hhhbo")
+
+[node name="Label2" type="Label" parent="Closepanel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 184.0
+offset_bottom = 40.0
+text = "INVITE"
+
+[connection signal="panel_close" from="Closepanel" to="." method="_on_closepanel_panel_close"]
+[connection signal="pressed" from="Closepanel/OK" to="." method="_on_ok_pressed"]

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bpu35v8y56glm"]
+
+[ext_resource type="Texture2D" uid="uid://cgdgwiryqrlg0" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Gen UI/UI_COIN.png" id="1_8mc4v"]
+
+[resource]
+atlas = ExtResource("1_8mc4v")
+region = Rect2(1, 0, 111, 117)

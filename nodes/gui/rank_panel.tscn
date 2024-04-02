@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dc6nj0qpmc0ne"]
+
+[node name="RankPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0

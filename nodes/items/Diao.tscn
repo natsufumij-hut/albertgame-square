@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://brhmd2wvpw6o0"]
+
+[ext_resource type="Texture2D" uid="uid://x5ekm45e8swn" path="res://assets/Diaok.png" id="1_ao3bq"]
+[ext_resource type="Script" path="res://nodes/gui/IconButton.gd" id="2_ulha6"]
+
+[node name="Diao" type="Control"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 80.0
+
+[node name="TextureRect" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_ao3bq")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_ulha6")

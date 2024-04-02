@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1wktq3pgm8wq"]
+
+[ext_resource type="Script" path="res://nodes/crack/CrackScript.gd" id="1_rk816"]
+[ext_resource type="Texture2D" uid="uid://bf1fvfthkc1hk" path="res://assets/cigerate.png" id="2_07tyw"]
+
+[node name="OneCrackGrey" type="Control"]
+custom_minimum_size = Vector2(144, 48)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 96.0
+offset_bottom = 48.0
+script = ExtResource("1_rk816")
+crack_size = 3
+code = "Normal"
+texture_code = "Cigrate"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 48.0
+texture = ExtResource("2_07tyw")
+expand_mode = 1

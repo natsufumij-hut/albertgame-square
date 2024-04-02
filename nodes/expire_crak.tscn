@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cajqd2gnrtuxu"]
+
+[ext_resource type="Texture2D" uid="uid://df6wn1y6jxgca" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Gen UI/UI_STAR_LARGE.png" id="1_i762t"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_87xad"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(220, 18, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+
+[node name="ExpireCrak" type="GPUParticles2D"]
+process_material = SubResource("ParticleProcessMaterial_87xad")
+texture = ExtResource("1_i762t")

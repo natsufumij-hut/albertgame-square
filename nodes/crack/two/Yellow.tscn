@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://ywxgo64g01x"]
+
+[ext_resource type="Script" path="res://nodes/crack/CrackScript.gd" id="1_160xw"]
+[ext_resource type="Texture2D" uid="uid://ynn22yusfu7u" path="res://assets/crak/orange.tres" id="2_qa0v4"]
+
+[node name="OneCrackYellow" type="Control"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 48.0
+offset_bottom = 48.0
+script = ExtResource("1_160xw")
+crack_size = 2
+code = "Special"
+texture_code = "Yellow"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 48.0
+texture = ExtResource("2_qa0v4")
+patch_margin_left = 7
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6

@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm7u1q1xcgxl"]
+
+[ext_resource type="PackedScene" uid="uid://ddtxuypbj1b8q" path="res://nodes/gui/avatar.tscn" id="1_30vjr"]
+[ext_resource type="Script" path="res://nodes/gui/userinfo.gd" id="1_u4xe1"]
+[ext_resource type="Texture2D" uid="uid://bhtm3q05lpasj" path="res://assets/login.png" id="3_pglah"]
+
+[sub_resource type="SystemFont" id="SystemFont_c1q40"]
+subpixel_positioning = 0
+
+[node name="Userinfo" type="Control"]
+custom_minimum_size = Vector2(112, 120)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 112.0
+offset_bottom = 120.0
+script = ExtResource("1_u4xe1")
+
+[node name="Avatar" parent="." instance=ExtResource("1_30vjr")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 96.0
+grow_horizontal = 2
+texture = ExtResource("3_pglah")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 96.0
+offset_right = 112.0
+offset_bottom = 124.0
+theme_override_fonts/font = SubResource("SystemFont_c1q40")
+text = "no"
+horizontal_alignment = 1

@@ -1,0 +1,162 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxdd4a8sfxs2p"]
+
+[ext_resource type="Texture2D" uid="uid://cnhtxew0svj8e" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_GREEN_SQ.png" id="1_yk4df"]
+[ext_resource type="Script" path="res://nodes/gui/Successed.gd" id="2_5fuge"]
+[ext_resource type="Theme" uid="uid://bh6jkjg5lp1j6" path="res://nodes/gui/nums.tres" id="2_rnj1b"]
+[ext_resource type="Texture2D" uid="uid://65luvdoruw1e" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_MENU.png" id="3_sx3b5"]
+[ext_resource type="Script" path="res://nodes/gui/IconButton.gd" id="4_18g6s"]
+[ext_resource type="Texture2D" uid="uid://c8s76fx3tsp8u" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Symbols & Text/SYMB_ RIGHTARROW.png" id="5_ryx6m"]
+
+[sub_resource type="Animation" id="Animation_wo3li"]
+resource_name = "anim"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:size")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(61, 320), Vector2(328, 320)]
+}
+
+[sub_resource type="Animation" id="Animation_con0t"]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(344, 320), Vector2(61, 320)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"go_next_level"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26kt8"]
+_data = {
+"anim": SubResource("Animation_wo3li"),
+"close": SubResource("Animation_con0t")
+}
+
+[node name="Successed" type="NinePatchRect"]
+offset_right = 344.0
+offset_bottom = 320.0
+texture = ExtResource("1_yk4df")
+patch_margin_left = 32
+patch_margin_top = 31
+patch_margin_right = 29
+patch_margin_bottom = 40
+script = ExtResource("2_5fuge")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 88.0
+offset_right = 296.0
+offset_bottom = 146.0
+theme = ExtResource("2_rnj1b")
+theme_override_font_sizes/font_size = 40
+text = "Clear"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 192.0
+offset_right = 135.0
+offset_bottom = 252.0
+texture_normal = ExtResource("3_sx3b5")
+script = ExtResource("4_18g6s")
+
+[node name="Next" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 192.0
+offset_right = 296.0
+offset_bottom = 250.0
+texture_normal = ExtResource("5_ryx6m")
+script = ExtResource("4_18g6s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_26kt8")
+}
+
+[connection signal="pressed" from="Control/Menu" to="." method="go_title"]
+[connection signal="pressed" from="Control/Next" to="." method="_on_next_pressed"]

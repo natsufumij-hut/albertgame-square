@@ -1,0 +1,56 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://pps1e7pbv6aj"]
+
+[ext_resource type="Texture2D" uid="uid://b2rp8a62wr2rq" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_PLAIN (6).png" id="1_g8oc2"]
+[ext_resource type="Texture2D" uid="uid://52jo7kiy3d0c" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_PLAIN (2).png" id="2_dgw0k"]
+[ext_resource type="Texture2D" uid="uid://bjdrcnpwe6ebv" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_PLAIN (1).png" id="3_toffn"]
+[ext_resource type="Texture2D" uid="uid://cec7i0eqd4ttq" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_PLAIN (5).png" id="4_wu5iq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h5xpm"]
+content_margin_left = 50.0
+content_margin_right = 50.0
+texture = ExtResource("1_g8oc2")
+texture_margin_left = 27.1587
+texture_margin_top = 15.6477
+texture_margin_right = 23.2018
+texture_margin_bottom = 14.5686
+region_rect = Rect2(-0.57222, -0.438749, 69.7852, 52.5187)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ulua"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w6rft"]
+content_margin_left = 50.0
+content_margin_right = 50.0
+texture = ExtResource("2_dgw0k")
+texture_margin_left = 25.7198
+texture_margin_top = 14.2088
+texture_margin_right = 24.6406
+texture_margin_bottom = 14.2088
+region_rect = Rect2(-0.752079, -0.798467, 70.1449, 50.5403)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjfvs"]
+content_margin_left = 50.0
+content_margin_right = 50.0
+texture = ExtResource("3_toffn")
+texture_margin_left = 27.7049
+texture_margin_top = 15.1081
+texture_margin_right = 21.583
+texture_margin_bottom = 17.9859
+region_rect = Rect2(-0.740257, -0.625792, 69.4255, 52.6986)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_08isc"]
+content_margin_left = 50.0
+content_margin_right = 50.0
+texture = ExtResource("4_wu5iq")
+texture_margin_left = 26.2594
+texture_margin_top = 12.4103
+texture_margin_right = 22.8421
+texture_margin_bottom = 14.2088
+
+[resource]
+Button/colors/font_color = Color(0.184314, 0.12549, 0.160784, 0.8)
+Button/font_sizes/font_size = 34
+Button/styles/disabled = SubResource("StyleBoxTexture_h5xpm")
+Button/styles/focus = SubResource("StyleBoxEmpty_6ulua")
+Button/styles/hover = SubResource("StyleBoxTexture_w6rft")
+Button/styles/normal = SubResource("StyleBoxTexture_kjfvs")
+Button/styles/pressed = SubResource("StyleBoxTexture_08isc")
