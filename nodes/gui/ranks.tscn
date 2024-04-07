@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnb78qj7hjk8w"]
+
+[ext_resource type="Theme" uid="uid://bh6jkjg5lp1j6" path="res://nodes/gui/nums.tres" id="1_a716y"]
+[ext_resource type="PackedScene" uid="uid://ddtxuypbj1b8q" path="res://nodes/gui/avatar.tscn" id="1_wvxgt"]
+[ext_resource type="Script" path="res://nodes/gui/ranks.gd" id="2_icpxf"]
+[ext_resource type="Texture2D" uid="uid://bhtm3q05lpasj" path="res://assets/login.png" id="3_14gor"]
+[ext_resource type="Texture2D" uid="uid://swgmr2watbgj" path="res://assets/face/DD162.png" id="4_jwqjf"]
+[ext_resource type="Texture2D" uid="uid://bdy675ao4fwp2" path="res://assets/face/DD163.png" id="5_cuqqy"]
+[ext_resource type="Texture2D" uid="uid://bqv6gtwkqqwcb" path="res://assets/face/DD167.png" id="6_f4qdc"]
+
+[node name="Ranks" type="Control"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_a716y")
+script = ExtResource("2_icpxf")
+textures = Array[Texture2D]([ExtResource("3_14gor"), ExtResource("4_jwqjf"), ExtResource("5_cuqqy"), ExtResource("6_f4qdc")])
+
+[node name="Avatar1" parent="." instance=ExtResource("1_wvxgt")]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="Label" type="Label" parent="Avatar1"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 156.0
+offset_bottom = 40.0
+text = "0"
+
+[node name="Avatar2" parent="." instance=ExtResource("1_wvxgt")]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_top = 56.0
+offset_right = 48.0
+offset_bottom = 104.0
+
+[node name="Label" type="Label" parent="Avatar2"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 156.0
+offset_bottom = 40.0
+text = "0"
+
+[node name="Avatar3" parent="." instance=ExtResource("1_wvxgt")]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_top = 112.0
+offset_right = 48.0
+offset_bottom = 160.0
+
+[node name="Label" type="Label" parent="Avatar3"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 156.0
+offset_bottom = 40.0
+text = "0"
+
+[node name="Avatar4" parent="." instance=ExtResource("1_wvxgt")]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_left = 160.0
+offset_right = 208.0
+offset_bottom = 48.0
+
+[node name="Label" type="Label" parent="Avatar4"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 156.0
+offset_bottom = 40.0
+text = "0"
+
+[node name="Avatar5" parent="." instance=ExtResource("1_wvxgt")]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_left = 160.0
+offset_top = 56.0
+offset_right = 208.0
+offset_bottom = 104.0
+
+[node name="Label" type="Label" parent="Avatar5"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 156.0
+offset_bottom = 40.0
+text = "0"
+
+[node name="Avatar6" parent="." instance=ExtResource("1_wvxgt")]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+offset_left = 160.0
+offset_top = 112.0
+offset_right = 208.0
+offset_bottom = 160.0
+
+[node name="Label" type="Label" parent="Avatar6"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 156.0
+offset_bottom = 40.0
+text = "0"

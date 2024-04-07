@@ -5,3 +5,4 @@ func _ready():
 	var mater = material as ShaderMaterial
 	mater.set_shader_parameter("texture_size",size)
 	mater.set_shader_parameter("radius",size.x/2)
+

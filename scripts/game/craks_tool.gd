@@ -38,7 +38,7 @@ func generate_line(columns: int):
 			gap+=1
 	return arr
 
-func get_line_from_data(array: Array[CrakData]):
+func get_line_from_data(array: Array[CrakData])->Array[int]:
 	var arr:Array[int] = []
 	for data in array:
 		var size = data.size
@@ -60,8 +60,7 @@ func generate_line_data(columns: int) -> Array[CrakData]:
 					arr.append(CrakData.empty())
 				break
 			else:
-				for i in range(0,r):
-					gap+=1
+				gap+=r
 				var isSpecial = randi() % 2
 				var sid = String.num(r)+"_"+String.num(isSpecial)
 				var dest_arr := dict[sid] as Array

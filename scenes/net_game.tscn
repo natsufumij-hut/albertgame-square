@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://jfl7801gsck4"]
+[gd_scene load_steps=12 format=3 uid="uid://jfl7801gsck4"]
 
 [ext_resource type="Script" path="res://scenes/net_game.gd" id="1_klc45"]
 [ext_resource type="Texture2D" uid="uid://bqw76nom2n3v2" path="res://assets/wood background.png" id="2_pt2u7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bjdrcnpwe6ebv" path="res://assets/FREEUIASSETPACK_BY@CAMTATZ/Buttons/BTN_PLAIN (1).png" id="8_4bu0s"]
 [ext_resource type="PackedScene" uid="uid://b3l1tquvk0hfa" path="res://nodes/gui/died.tscn" id="9_8vhxc"]
 [ext_resource type="PackedScene" uid="uid://cxdd4a8sfxs2p" path="res://nodes/gui/Successed.tscn" id="10_52xw8"]
+[ext_resource type="PackedScene" uid="uid://cnb78qj7hjk8w" path="res://nodes/gui/ranks.tscn" id="11_ukab6"]
 
 [node name="NetGame" type="Node2D"]
 script = ExtResource("1_klc45")
@@ -30,12 +31,6 @@ texture_normal = ExtResource("3_qj451")
 texture_pressed = ExtResource("4_b2r7h")
 ignore_texture_size = true
 stretch_mode = 0
-
-[node name="Score" parent="StoryHUD" instance=ExtResource("5_753p1")]
-offset_left = 16.0
-offset_top = 128.0
-offset_right = 192.0
-offset_bottom = 160.0
 
 [node name="Level" type="Label" parent="StoryHUD"]
 anchors_preset = 5
@@ -109,10 +104,22 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Ranks" parent="StoryHUD" instance=ExtResource("11_ukab6")]
+offset_left = 144.0
+offset_top = 16.0
+offset_right = 444.0
+offset_bottom = 324.0
+
+[node name="Score" parent="StoryHUD" instance=ExtResource("5_753p1")]
+offset_left = 32.0
+offset_top = 784.0
+offset_right = 208.0
+offset_bottom = 816.0
+
 [connection signal="pressed" from="StoryHUD/Pause" to="." method="_on_pause_pressed"]
-[connection signal="update_score" from="StoryHUD/Score" to="." method="update_score"]
 [connection signal="add_score" from="StoryHUD/GameGrid" to="." method="add_score"]
 [connection signal="end" from="StoryHUD/GameGrid" to="." method="failed"]
 [connection signal="wait_event" from="StoryHUD/GameGrid" to="." method="wait_next_event"]
 [connection signal="wait_init_lines" from="StoryHUD/GameGrid" to="." method="wait_init_lines"]
-[connection signal="wait_new_line" from="StoryHUD/GameGrid" to="." method="wait_next_line"]
+[connection signal="wait_new_line" from="StoryHUD/GameGrid" to="." method="wait_next_lines"]
+[connection signal="update_score" from="StoryHUD/Score" to="." method="update_score"]

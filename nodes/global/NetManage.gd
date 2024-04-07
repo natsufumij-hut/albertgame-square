@@ -3,7 +3,7 @@ extends Node
 const GAP := "PACK-GAP-0010"
 
 var clientTcp := StreamPeerTCP.new() as StreamPeerTCP
-var host = "192.168.2.224"
+var host = "192.168.2.44"
 var port = 1234
 
 const MAX_RETRY_TIMES = 1000
@@ -14,6 +14,9 @@ var key := "1234567887654321"
 var aes: = AESContext.new()
 var client_id:String = CLIENT_UNKNOWN
 var play_id: String = ""
+var play_data: Dictionary = {}
+
+var room_id: String = ""
 var user_id = ""
 var callDict :Dictionary = {}
 var start_recei: bool = false
@@ -41,7 +44,6 @@ func _process(delta):
 			else:
 				msg_byte.clear()
 				start_recei=true
-				print("start bytes...")
 				var result = clientTcp.get_data(va)
 				msg_byte.append_array(get_data(result))
 		else:
@@ -59,8 +61,6 @@ func get_data(result: Array)->PackedByteArray:
 		return []
 
 func slap_message():
-	print("start bytes...")
-	print(msg_byte.get_string_from_utf8())
 	if msg_byte.size()>2:
 		var datas = dec_with_gap(msg_byte)
 		for data in datas:
@@ -169,6 +169,7 @@ func _send_data(model: String,type:String,body: String,operate: bool = true):
 	data.model=model
 	data.body=body
 	data.operate=operate
+	print("[network] send msg: ",JSON.stringify(inst_to_dict(data)))
 	var enc = enc(data)
 	if clientTcp.get_status()==StreamPeerTCP.STATUS_CONNECTED:
 		clientTcp.put_data(enc.to_utf8_buffer())

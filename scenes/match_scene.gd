@@ -12,6 +12,7 @@ func _ready():
 	NetManage.add_handler(TransferData.MODEL_REQUIRE,TransferType.TYPE_ROOM_INVITE_ME,self.invite_me)
 	NetManage.add_handler(TransferData.MODEL_RESPONSE,TransferType.TYPE_ROOM_INVITE_CONFIRM,self.invite_result)
 	NetManage.add_handler(TransferData.MODEL_REQUIRE,TransferType.TYPE_ROOM_REFRESH,self.room_refresh)
+	NetManage.add_handler(TransferData.MODEL_REQUIRE,TransferType.TYPE_ROOM_START_RES,self._receive_data)	
 	set_is_master(true)
 	create_room()
 
@@ -37,7 +38,12 @@ func _on_quit_pressed():
 	pass # Replace with function body.
 
 func _on_start_pressed():
-	pass # Replace with function body.
+	room_transfer.room_play(room_id)
+
+func _receive_data(data: TransferData):
+	var dict = JSON.parse_string(data.body)
+	NetManage.play_data = dict
+	get_tree().change_scene_to_file("res://scenes/net_game.tscn")
 
 func _on_invite_pressed():
 	$CanvasLayer/Invite.visible = true
@@ -83,6 +89,7 @@ func room_refresh(data: TransferData):
 	print("room_refresh")
 	var dict = JSON.parse_string(data.body)
 	var p_room_id = dict['roomId']
+	NetManage.room_id = p_room_id
 	var master_id = dict['masterId']
 	var arr = dict['members'] as Array
 	room_id=p_room_id

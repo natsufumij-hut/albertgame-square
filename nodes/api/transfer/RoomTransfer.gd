@@ -21,3 +21,12 @@ func invite_confirm(confirm: bool, room_id: String, user_id: String):
 	}
 	print("invite_confirm ",confirm," room id ",room_id )
 	NetManage.require(TransferType.TYPE_ROOM_INVITE_CONFIRM,JSON.stringify(dict),true)
+
+# 房主发出开始游戏的信号
+func room_play(room_id: String):
+	var dict = {
+		"roomId": room_id,
+		"column": 9
+	}
+	NetManage.require(TransferType.TYPE_ROOM_START,JSON.stringify(dict),true)
+

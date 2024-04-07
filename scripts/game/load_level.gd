@@ -3,7 +3,7 @@ class_name LoadLevel
 ## LevelLine.txt
 ## blue=b,green=g,yellow=y,grey=r
 ## chiken=c,takara=t,inazuma=i,bask=s
-## tai=a,cigrate=ci,diao=d
+## tai=a,cigrate=ci,diao=d,zhong=zh
 ##
 ## 
 ## LINE 1b,1b,2b,2b,3g,3g,3g,1t
@@ -22,7 +22,8 @@ const idMap: Dictionary = {
 	"s": "Bask",
 	"a": "Tai",
 	"ci": "Cigrate",
-	"d": "Diao"
+	"d": "Diao",
+	"zh": "Zhong"
 }
 
 const special: Dictionary = {
@@ -45,8 +46,8 @@ func load_line(line: String) -> LevelLine:
 		column.event = li.to_int()
 	return column
 
-# 1y,1y,1c,0,0,0,0,1g,0
-func load_data(line: String) -> Array[CrakData]:
+# 1y,1y,1c,2g,2g,0,0,1g,0
+func load_data(line: String,columns = 9) -> Array[CrakData]:
 	var arr = line.split(",")
 	var array: Array[CrakData] = []
 	var j := 0
@@ -58,7 +59,7 @@ func load_data(line: String) -> Array[CrakData]:
 		else:
 			var data = CrakData.new()
 			var num = i.substr(0,1)
-			var id = i.substr(1,1)
+			var id = i.substr(1,i.length()-1)
 			data.size = num.to_int()
 			if special.has(id):
 				data.code="Special"

@@ -4,66 +4,87 @@ var tools: = CraksTool.new()
 @onready var score :Score = $StoryHUD/Score
 @onready var grid: GameGrid = $StoryHUD/GameGrid
 @onready var diedPanel: Died = $StoryHUD/Died
+@onready var ranks: = $StoryHUD/Ranks as Ranks
 
 @export var max_level: int = 10
 var index = 0
 
 const events = [ "SnowEvent", "IceEvent" ]
 
-var lines: Array[LevelLine] = []
-var now_level: int = 1
+var nowIndex = 0
+var nowEvent = 0
 
-class SomeA:
-	var a: String
-	var b: String
+var play_id : = ""
+var play := PlayTransfer.new()
+var load := LoadLevel.new()
 
 func _ready():
 	#var loader = LoadLevel.new()
 	#lines = loader.load_level(now_level)
+	load_play()
 	grid.start_grid()
 	GlobalSignal.add_score.connect(self.add_score)
+	NetManage.add_handler(TransferData.MODEL_RESPONSE,TransferType.TYPE_PLAY_INIT_LINES,self.get_init_lines_data)
+	NetManage.add_handler(TransferData.MODEL_RESPONSE,TransferType.TYPE_PLAY_NEXT_LINE,self.get_next_line_data)
+	NetManage.add_handler(TransferData.MODEL_RESPONSE,TransferType.TYPE_PLAY_EVENT,self.get_next_event)
+	NetManage.add_handler(TransferData.MODEL_REQUIRE,TransferType.TYPE_PLAY_UPDATE_SCORE,self.get_update_score)
 
 func update_score(sc: int):
-	pass
+	if play_id!='':
+		play.update_score(play_id,NetManage.user_id,sc)
+
+func load_play():
+	var play_data = NetManage.play_data
+	play_id = play_data['playId']
+	var members = play_data['members']
+	ranks.init_users(members)
 
 func wait_init_lines():
-	#var line0 = lines[index].line
-	#var line1 = lines[index+1].line
-	#index+=2
-	var line0 = tools.generate_line_data(9)
-	var line1 = tools.generate_line_data(9)
-	grid.put_init_lines(line0,line1)
+	play.wait_init_lines(play_id)
 
-func wait_next_line():
-	#if index==lines.size():
-		#print("关卡结束!!!!")
-		#grid.no_more_line()
-	#else:
-		#var line0 = lines[index].line
-		#index+=1
-		##var line0 = tools.generate_line_data(9)
-		#grid.put_new_line(line0)
-	var line0 = tools.generate_line_data(9)
-	grid.put_new_line(line0)
+func get_init_lines_data(pack: TransferData):
+	var dict = JSON.parse_string(pack.body)
+	var line0 = dict['line0']
+	var line1 = dict['line1']
+	var line0_data = load.load_data(line0)
+	var line1_data = load.load_data(line1)
+	put_init_lines(line0_data,line0_data)
+
+func put_init_lines(line0: Array,line1: Array):
+	grid.put_init_lines(line0,line1)
+	nowIndex+=2
+
+func wait_next_lines():
+	play.wait_next_line(play_id,nowIndex)
+
+func get_next_line_data(pack: TransferData):
+	var dict = JSON.parse_string(pack.body)
+	var line0 = dict['line']
+	var line0_data = load.load_data(line0)
+	put_next_lines(line0_data)
+
+func put_next_lines(line: Array):
+	grid.put_new_line(line)
+	nowIndex+=1
 
 func wait_next_event():
-	var r = randi() % 100
-	if r<10:
-		r = r % events.size()
-		var id = events[r]
-		show_event(id)
-	else:
+	play.wait_next_event(play_id,nowEvent)
+
+func get_next_event(pack: TransferData):
+	var dict = JSON.parse_string(pack.body)
+	var event = dict['event']
+	if event=="none":
 		grid.event_end()
-	#print("查找事件!!!")
-	#grid.event_end()
-	#var line = lines[index]
-	#if line.type==LevelLine.TYPE_EVENT:
-		#if line.event==LevelLine.EVENT_SNOW:
-			#event_show()
-		#index+=1
-	#else:
-		#print("没有事件!!!")
-		#grid.event_end()
+	else:
+		show_event(event)
+	nowEvent+=1
+
+func get_update_score(pack: TransferData):
+	var dict = JSON.parse_string(pack.body)
+	var userId := dict['userId'] as String
+	var score := dict['score'] as int
+	print("some one update score, [",userId,' ',score,']')
+	ranks.update_one_score(userId,score)
 
 func show_event(id: String):
 	var path = "res://nodes/event/"+id+".tscn"
@@ -75,7 +96,6 @@ func show_event(id: String):
 	$StoryHUD.add_child(ind)
 	add_child(ind)
 	ind.start_crak_event()
-	#grid.event_end()
 
 func event_end():
 	print("事件结束")
@@ -91,4 +111,4 @@ func failed():
 	GameDataLoader.updateMaxUnLimitScore(sc)
 
 func _on_pause_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/match_scene.tscn")

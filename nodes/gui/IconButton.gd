@@ -11,12 +11,12 @@ func _ready():
 func _on_button_down():
 	if !down:
 		scale = scale * 1.2
-		print("scale",scale)
+		#print("scale",scale)
 		down=true
 
 func _on_button_up():
 	if down:
 		scale = scale / 1.2
-		print("scale",scale)
+		#print("scale",scale)
 		down= false
 
