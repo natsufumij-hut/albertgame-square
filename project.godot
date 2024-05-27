@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="square-g"
+config/name="albertgame-square"
 run/main_scene="res://scenes/start_scene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
