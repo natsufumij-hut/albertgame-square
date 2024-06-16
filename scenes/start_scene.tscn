@@ -15,10 +15,15 @@ logined_texture = ExtResource("2_jat4a")
 
 [node name="StartHUD" type="CanvasLayer" parent="."]
 
-[node name="Back" type="Sprite2D" parent="StartHUD"]
-position = Vector2(584, 432)
-scale = Vector2(1.37866, 1.51674)
+[node name="Back" type="TextureRect" parent="StartHUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_3whgk")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Star" parent="StartHUD" instance=ExtResource("1_iwq1b")]
 anchors_preset = 5
